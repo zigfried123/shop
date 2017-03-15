@@ -15,17 +15,16 @@ echo $flash;
 
 <?php $tree = $model->getTree(); ?>
 
-    <?= $form->field($model, 'cat_id')->label("Выбрать категорию")->dropDownList($tree); ?>
-	
-	<?= $form->field($model, 'name')->label("Добавить продукт"); ?>
-	
-	<?= $form->field($model, 'img')->label("Добавить изображение")->fileInput() ?>
+<?= $form->field($model, 'cat_id')->label("Выбрать категорию")->dropDownList($tree); ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-    </div>
-	
-	
+<?= $form->field($model, 'name')->label("Добавить продукт"); ?>
+
+<?= $form->field($model, 'img')->label("Добавить изображение")->fileInput() ?>
+
+<div class="form-group">
+    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+</div>
+
 
 <?php ActiveForm::end(); ?>
 

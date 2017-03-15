@@ -13,13 +13,12 @@ echo $flash;
 
 <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name') ?>
+<?= $form->field($model, 'name') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-    </div>
-	
-	
+<div class="form-group">
+    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+</div>
+
 
 <?php ActiveForm::end(); ?>
 

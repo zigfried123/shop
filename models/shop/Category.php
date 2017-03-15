@@ -280,10 +280,6 @@ class Category extends \yii\db\ActiveRecord
                 $children = $find->children(1)->all();
 
 
-                $tree["tree2"] = [[[111, 777]], [222], [[333]]];
-                $tree["tree2"][1][] = 123;
-
-
                 foreach ($parents as $parent) {
                     $tree["breads"][] = ["name" => $parent->name, "alias" => lcfirst($parent->alias)];
                 }
@@ -376,7 +372,6 @@ class Category extends \yii\db\ActiveRecord
                                 }
 
 
-
                             } else if ($lvl == 2) {
 
 
@@ -429,9 +424,6 @@ class Category extends \yii\db\ActiveRecord
 
     public static function setRoot()
     {
-
-
-
 
 
     }

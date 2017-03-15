@@ -9,6 +9,7 @@ use yii\data\Pagination;
 use creocoder\nestedsets\NestedSetsBehavior;
 use creocoder\nestedsets\NestedSetsQueryBehavior;
 use yii\helpers\VarDumper;
+
 /**
  * This is the model class for table "tbl_category".
  *
@@ -31,10 +32,8 @@ use yii\helpers\VarDumper;
  */
 class FormRoot extends \yii\db\ActiveRecord
 {
-	
-	
-	
-	
+
+
     /**
      * @inheritdoc
      */
@@ -50,84 +49,85 @@ class FormRoot extends \yii\db\ActiveRecord
     {
         return [
             ['name', 'required'],
-			['name', 'checkRoot']
+            ['name', 'checkRoot']
         ];
     }
-	
-	
-	public function attributeLabels()
-	{
-		 return ["name"=>"Корневая категория"];
-	}
 
-	
-	public function checkRoot($attribute,$params){
-		
-		//$find = self::find()->where(["alias"=>$this->name])->one();
-		
-		
-		
-		$roots = Category::find()->roots()->all();
-		
-		foreach($roots as $root_find){
-			if($root_find->name == $this->name){
-				$find = true;
-				break;
-			}
-		}
-		
-		if(isset($find) && $find){
-			$this->addError('name',"Такая корневая категория уже есть");
-		}
-		
-		
-	}
-	
-	
-	public function makeRoot($root){
-		$category = new Category(['name' => $root, 'alias' => self::translit($root)]);
-		$category->makeRoot();
-	}
-	
-	
-	public static function translit($str){
-		
-		$convert = array(
-        'а' => 'a',   'б' => 'b',   'в' => 'v',
-        'г' => 'g',   'д' => 'd',   'е' => 'e',
-        'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
-        'и' => 'i',   'й' => 'y',   'к' => 'k',
-        'л' => 'l',   'м' => 'm',   'н' => 'n',
-        'о' => 'o',   'п' => 'p',   'р' => 'r',
-        'с' => 's',   'т' => 't',   'у' => 'u',
-        'ф' => 'f',   'х' => 'h',   'ц' => 'c',
-        'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',
-        'ь' => '',  'ы' => 'y',   'ъ' => '',
-        'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
-        
-        'А' => 'A',   'Б' => 'B',   'В' => 'V',
-        'Г' => 'G',   'Д' => 'D',   'Е' => 'E',
-        'Ё' => 'E',   'Ж' => 'Zh',  'З' => 'Z',
-        'И' => 'I',   'Й' => 'Y',   'К' => 'K',
-        'Л' => 'L',   'М' => 'M',   'Н' => 'N',
-        'О' => 'O',   'П' => 'P',   'Р' => 'R',
-        'С' => 'S',   'Т' => 'T',   'У' => 'U',
-        'Ф' => 'F',   'Х' => 'H',   'Ц' => 'C',
-        'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
-        'Ь' => '',  'Ы' => 'Y',   'Ъ' => '',
-        'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
-		);
-		
-		$translit = strtr($str, $convert);
-		
-		return $translit;
-	}
-	
-	
+
+    public function attributeLabels()
+    {
+        return ["name" => "Корневая категория"];
+    }
+
+
+    public function checkRoot($attribute, $params)
+    {
+
+        //$find = self::find()->where(["alias"=>$this->name])->one();
+
+
+        $roots = Category::find()->roots()->all();
+
+        foreach ($roots as $root_find) {
+            if ($root_find->name == $this->name) {
+                $find = true;
+                break;
+            }
+        }
+
+        if (isset($find) && $find) {
+            $this->addError('name', "Такая корневая категория уже есть");
+        }
+
+
+    }
+
+
+    public function makeRoot($root)
+    {
+        $category = new Category(['name' => $root, 'alias' => self::translit($root)]);
+        $category->makeRoot();
+    }
+
+
+    public static function translit($str)
+    {
+
+        $convert = array(
+            'а' => 'a', 'б' => 'b', 'в' => 'v',
+            'г' => 'g', 'д' => 'd', 'е' => 'e',
+            'ё' => 'e', 'ж' => 'zh', 'з' => 'z',
+            'и' => 'i', 'й' => 'y', 'к' => 'k',
+            'л' => 'l', 'м' => 'm', 'н' => 'n',
+            'о' => 'o', 'п' => 'p', 'р' => 'r',
+            'с' => 's', 'т' => 't', 'у' => 'u',
+            'ф' => 'f', 'х' => 'h', 'ц' => 'c',
+            'ч' => 'ch', 'ш' => 'sh', 'щ' => 'sch',
+            'ь' => '', 'ы' => 'y', 'ъ' => '',
+            'э' => 'e', 'ю' => 'yu', 'я' => 'ya',
+
+            'А' => 'A', 'Б' => 'B', 'В' => 'V',
+            'Г' => 'G', 'Д' => 'D', 'Е' => 'E',
+            'Ё' => 'E', 'Ж' => 'Zh', 'З' => 'Z',
+            'И' => 'I', 'Й' => 'Y', 'К' => 'K',
+            'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+            'О' => 'O', 'П' => 'P', 'Р' => 'R',
+            'С' => 'S', 'Т' => 'T', 'У' => 'U',
+            'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C',
+            'Ч' => 'Ch', 'Ш' => 'Sh', 'Щ' => 'Sch',
+            'Ь' => '', 'Ы' => 'Y', 'Ъ' => '',
+            'Э' => 'E', 'Ю' => 'Yu', 'Я' => 'Ya',
+        );
+
+        $translit = strtr($str, $convert);
+
+        return $translit;
+    }
+
 
     /**
      * @inheritdoc
      */
-    
+
 }
 

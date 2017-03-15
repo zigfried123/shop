@@ -14,9 +14,9 @@ use app\models\EntryForm;
 class Ctrl extends Controller
 {
     public function init()
-    {    
-        
- 
+    {
+
+
         Yii::app()->language = "ru";
         parent::init();
     }
@@ -24,14 +24,9 @@ class Ctrl extends Controller
 
 class SiteController extends Controller
 {
-	
-	
-	
-	
-	
-	
-	
-	 public function actionEntry()
+
+
+    public function actionEntry()
     {
         $model = new EntryForm();
 
@@ -39,17 +34,15 @@ class SiteController extends Controller
             // данные в $model удачно проверены
 
             // делаем что-то полезное с $model ...
- 
+
             return $this->render('entry-confirm', ['model' => $model]);
         } else {
             // либо страница отображается первый раз, либо есть ошибка в данных
             return $this->render('entry', ['model' => $model]);
         }
     }
-	
-	
-	
-	
+
+
     /**
      * @inheritdoc
      */
@@ -150,7 +143,7 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model,
         ]);
-	
+
     }
 
     /**
@@ -162,14 +155,12 @@ class SiteController extends Controller
     {
         return $this->render("about", ['about' => $about]);
     }
-	
-	
-	
-	public function actionSay($message = 'Привет')
+
+
+    public function actionSay($message = 'Привет')
     {
         return $this->render('say', ['message' => $message]);
     }
-	
-	
-	
+
+
 }
